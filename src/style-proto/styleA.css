@@ -24,6 +24,8 @@ html {
 body {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav,
@@ -42,7 +44,6 @@ a {
     text-decoration: none;
 }
 
-/* Floats on the left side of the page */
 aside {
     width: var(--blockWidth);
     height: 100vh;
@@ -62,18 +63,15 @@ aside section:first-of-type {
     flex: 1;
 }
 
-/* Positioned at the bottom relatively to the aside */
 .side-comment {
     height: var(--blockWidth);
     background-color: var(--green);
     border-top: 1px solid black;
 }
 
-/* Floats on the right side of a page */
 main {
-    width: calc(100vw - (var(--blockWidth) + var(--mainMargin)));
     margin-left: var(--mainMargin);
-    float: right;
+    flex: 1;
 }
 
 header {
@@ -90,7 +88,6 @@ nav {
     align-items: center;
 }
 
-/* Centered using translate technique */
 .top-logo {
     width: var(--blockWidth);
     height: var(--mainMargin);
@@ -130,7 +127,6 @@ footer {
     border: 1px solid black;
 }
 
-/* Centered using flex box */
 .bottom-logo {
     width: var(--blockWidth);
     height: var(--mainMargin);
@@ -146,10 +142,4 @@ footer {
 
 .d-col {
     flex-direction: column;
-}
-
-/* Table cell centering technique */
-.center--table {
-    display: table-cell;
-    vertical-align: middle;
 }

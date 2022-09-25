@@ -17,6 +17,12 @@
     --blue: rgb(145, 197, 235);
 }
 
+@media screen and (min-width: 1024px) {
+    :root {
+        --blockWidth: 12vw;
+    }
+}
+
 html {
     font-family: 'Open Sans', sans-serif;
 }
@@ -24,6 +30,10 @@ html {
 body {
     width: 100vw;
     height: 100vh;
+    display: grid;
+    grid-template-columns: [aside] var(--blockWidth) [main] auto;
+    grid-template-rows: [nav] var(--blockWidth) [main] auto [footer] var(--blockWidth);
+    column-gap: var(--mainMargin);
 }
 
 nav,
@@ -42,42 +52,27 @@ a {
     text-decoration: none;
 }
 
-/* Floats on the left side of the page */
-aside {
-    width: var(--blockWidth);
-    height: 100vh;
-    float: left;
-    display: flex;
-    flex-direction: column;
+.aside {
+    padding: 8px;
     background-color: var(--red);
     border: 1px solid black;
     text-align: center;
 }
 
-aside section {
-    padding: 8px;
+.aside:nth-of-type(1) {
+    grid-column: 1 / 1;
+    grid-row: 1 / span 2;
 }
 
-aside section:first-of-type {
-    flex: 1;
-}
-
-/* Positioned at the bottom relatively to the aside */
-.side-comment {
-    height: var(--blockWidth);
+.aside:nth-of-type(2) {
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
     background-color: var(--green);
-    border-top: 1px solid black;
-}
-
-/* Floats on the right side of a page */
-main {
-    width: calc(100vw - (var(--blockWidth) + var(--mainMargin)));
-    margin-left: var(--mainMargin);
-    float: right;
+    border-top: none;
 }
 
 header {
-    height: calc(var(--blockWidth) / 2);
+    grid-row: 1 / 1;
     padding: calc(var(--mainMargin) / 3);
     background-color: var(--blue);
     border: 1px solid black;
@@ -90,7 +85,6 @@ nav {
     align-items: center;
 }
 
-/* Centered using translate technique */
 .top-logo {
     width: var(--blockWidth);
     height: var(--mainMargin);
@@ -110,7 +104,7 @@ nav {
 }
 
 article {
-    height: calc(100vh - var(--blockWidth));
+    grid-row: 2 / 3;
     padding: 36px;
     background-color: transparent;
     border-left: 1px solid black;
@@ -121,7 +115,7 @@ article p {
 }
 
 footer {
-    height: calc(var(--blockWidth) / 2);
+    grid-row: 3 / 4;
     padding: calc(var(--mainMargin) / 3);
     display: flex;
     justify-content: space-between;
@@ -130,7 +124,6 @@ footer {
     border: 1px solid black;
 }
 
-/* Centered using flex box */
 .bottom-logo {
     width: var(--blockWidth);
     height: var(--mainMargin);
@@ -146,10 +139,4 @@ footer {
 
 .d-col {
     flex-direction: column;
-}
-
-/* Table cell centering technique */
-.center--table {
-    display: table-cell;
-    vertical-align: middle;
 }
