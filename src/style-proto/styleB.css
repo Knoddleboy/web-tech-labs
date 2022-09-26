@@ -76,17 +76,13 @@ header {
     padding: calc(var(--mainMargin) / 3);
     background-color: var(--blue);
     border: 1px solid black;
-}
-
-nav {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: [start] var(--blockWidth) [gap] auto [end] 40%;
+    align-content: center;
 }
 
 .top-logo {
-    width: var(--blockWidth);
+    grid-column: 1 / 1;
     height: var(--mainMargin);
     background-color: #fff;
     border: 1px solid black;
@@ -97,10 +93,14 @@ nav {
 }
 
 .navbar {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-    float: right;
+    grid-column: 3 / 3;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.navbar li {
+    align-self: center;
+    justify-self: end;
 }
 
 article {
@@ -117,26 +117,27 @@ article p {
 footer {
     grid-row: 3 / 4;
     padding: calc(var(--mainMargin) / 3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: var(--blue);
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: [start] var(--blockWidth) [gap] auto [end] var(--blockWidth);
+    align-content: center;
+}
+
+footer p {
+    grid-column: 1 / 1;
+    align-self: center;
 }
 
 .bottom-logo {
-    width: var(--blockWidth);
+    grid-column: 3 / 3;
     height: var(--mainMargin);
     background-color: #fff;
     border: 1px solid black;
 }
 
-.center--flex {
-    display: flex;
+.center--grid {
+    display: grid;
     justify-content: center;
-    align-items: center;
-}
-
-.d-col {
-    flex-direction: column;
+    align-content: center;
 }
