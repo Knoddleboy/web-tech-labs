@@ -9,11 +9,12 @@
 
 /* Global variables */
 :root {
-    --blockHeight: 10vw;
-    --asideWidth: 24vw;
+    --blockHeight: 8vw;
+    --asideWidth: 28vw;
     --mainMargin: calc(var(--blockHeight) / 2);
 
     --aside-news-gap: 20px;
+    --grid-gap: 40px;
 
     --red: rgb(235, 194, 182);
     --redish: rgb(235, 73, 51);
@@ -28,7 +29,6 @@ html {
 
 body {
     width: 100vw;
-    height: 100vh;
     display: flex;
 }
 
@@ -77,12 +77,7 @@ a {
 }
 
 .aside section {
-    padding: 0 calc(var(--mainMargin) / 2);
-}
-
-.news__card--wrapper {
-    max-height: 85%;
-    overflow-y: scroll;
+    padding: calc(var(--mainMargin) / 2);
 }
 
 .aside__news {
@@ -124,11 +119,8 @@ a {
 /* MAIN */
 
 main {
-    height: 100%;
     margin-left: var(--mainMargin);
     flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
@@ -160,6 +152,7 @@ header {
 
 .nav__navbar {
     width: 40%;
+    min-width: 390px;
     display: flex;
     justify-content: space-between;
     float: right;
@@ -218,13 +211,10 @@ header {
 }
 
 .marticle {
-    flex: 1;
-    padding: 36px;
+    height: calc(100% - 2 * var(--blockHeight));
+    padding: var(--grid-gap);
     background-color: transparent;
     border-left: 1px solid black;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
 }
 
 .marticle h1 {
@@ -238,11 +228,10 @@ header {
 }
 
 .marticle .content {
-    flex: 1;
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    column-gap: 5%;
-    row-gap: 5%;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
 }
 
 .marticle .content__card figure {
